@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TR.Vista.Vimc">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Bisque">
+            <StackLayout BackgroundColor="Beige">
+                <Label Text="IMC Y SELECCION"
+                HorizontalOptions="CenterAndExpand"
+                       FontSize="30"/>
+            </StackLayout>
+            <Label Text="PODRAS REALIZAR OPERACIONES" FontAttributes="Italic" HorizontalOptions="Center"/>
+            <StackLayout>
+                
+                <Grid>
+                     <RadioButton IsChecked="{Binding Rimc}" Content="IMC" GroupName="OPCIONES" Grid.Column="0"/>
+                     <RadioButton IsChecked="{Binding Rfcn}" Content="FCN" GroupName="OPCIONES" Grid.Column="1"/>
+                </Grid>
+
+                <Label Text="DATOS" FontSize="25" HorizontalOptions="Center" TextColor="Black"/>
+
+           
+                    <!--ENTRADA PARA LO DEL IMC-->
+                    <Entry Placeholder="PESO KG" IsVisible="{Binding Rimc}" Grid.Column="0" Text="{Binding Peso}" Keyboard="Numeric">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused">
+                                <Setter Property="BackgroundColor" Value="LightPink"/>
+                                <Setter Property="TextColor" Value="Black"/>
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <Entry Placeholder="ALTURA MTS" IsVisible="{Binding Rimc}" Grid.Column="1" Text="{Binding Altura}" Keyboard="Numeric">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused">
+                                <Setter Property="BackgroundColor" Value="LightPink"/>
+                                <Setter Property="TextColor" Value="Black"/>
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+
+                    <!--ENTRADA PARA LO DEL FCN-->
+                    <Entry Placeholder="ingresa numero FCN" IsVisible="{Binding Rfcn}" Grid.Column="0">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused">
+                                <Setter Property="BackgroundColor" Value="LightPink"/>
+                                <Setter Property="TextColor" Value="Black"/>
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+                    <Entry Placeholder="ingresa numero FCN" IsVisible="{Binding Rfcn}" Grid.Column="1">
+                        <Entry.Triggers>
+                            <Trigger TargetType="Entry" Property="IsFocused">
+                                <Setter Property="BackgroundColor" Value="LightPink"/>
+                                <Setter Property="TextColor" Value="Black"/>
+                            </Trigger>
+                        </Entry.Triggers>
+                    </Entry>
+           
+
+                <Button Command="{Binding Calcularcommand}" Margin="150,0" CornerRadius="15" BackgroundColor="White" TextColor="Black" Text="calcular">
+                    <Button.Triggers>
+                        <Trigger TargetType="Button" Property="IsPressed">
+                            <Setter Property="BackgroundColor" Value="Black"/>
+                            <Setter Property="TextColor" Value="White"/>
+                        </Trigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Label Text="RESULTADO:" FontSize="20" TextColor="Black"/>
+                <Label Text="{Binding Resultado}" FontSize="18" TextColor="Black"/>
+
+                <Image Source="https://i.ibb.co/cvQBftC/WARN.png" IsVisible="{Binding Negativo}"/>
+
+                <Image />
+                <Image />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
